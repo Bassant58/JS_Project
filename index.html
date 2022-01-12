@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registeration Page</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <form id="registerform">
+        <p>Registeration Page</p>
+        <div id="info">
+            <div class="input-control">
+        <label for="username" class="label"> User Name</label>
+        <input class="box" type="text" id="username" name="username"> <br>
+        <div class="error"></div>
+</div>
+
+        <div class="input-control">
+        <label for="pass" class="label"> User Password </label>
+        <input class="box" type="password" id="password" name="password"> <br>
+        <div class="error"></div>
+        </div>
+
+        <div class="input-control">
+        <label for="pass" class="label"> Password Conformation </label>
+        <input class="box" type="password" id="password2" name="password2"><br>
+        <div class="error"></div>
+</div>
+
+<div class="input-control">
+        <label for="email" class="label"> Email </label>
+        <input class="box" type="email" id="email" name="email"> <br>
+        <div class="error"></div>
+    </div>
+        </div>
+        <div class="input-control">
+        <label for="gender">Gender: </label>  
+        <div id="radioDiv">
+        <input type="radio" id="male" name="gender" value="male"/>Male  
+        <br>
+        <input type="radio" id="female" name="gender" value="female"/>Female 
+        </div>
+        </div>
+
+        <button  value="submit" id="submit"> Ok </button>
+        <button  value="cancle" id="cancle"> Cancle </button>
+    </form>
+
+    <script src="./validation.js"></script>
+</body>
+</html>

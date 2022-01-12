@@ -1,0 +1,127 @@
+/* for background color */
+body {
+    background-color: whitesmoke;
+}
+/* ==================================================================== */
+/* login form */
+#loginform {
+    background-color: #eceff2;
+    border: 1px solid rgb(0, 0, 245);
+    width: 500px;
+    height: 320px; 
+    margin: auto; 
+    margin-top: 100px;
+}
+/* user / password */
+#loginform label {
+    padding-left: 30px;
+    padding-top: 80px;
+}
+/* boxes */
+#loginform input{
+   margin-top: 20px;
+   border: 1px solid rgb(24, 95, 119);
+   height: 30px;
+   width: 300px;
+   background-color: transparent;
+}
+/* we can remove it if we don't need it */
+#loginform input:focus {
+    background-color: whitesmoke;
+}
+#loginform  #username{
+    margin-left: 60px;
+}
+#loginform #password{
+    margin-left: 38px;
+}
+#loginform  p , #registerform p{
+    text-align: center;
+}
+#loginform button , #registerform button{
+    background-color: transparent;
+    border: 1px solid rgb(24, 95, 119);
+    color: rgb(199, 19, 19);
+    width: 150px;
+    height: 30px;
+    margin-left: 70px;
+    margin-top: 60px;
+}
+ button:hover{
+    cursor: pointer;
+}
+#loginform .input-control.success input {
+    border-color: #09c372;
+    background-color: whitesmoke;
+}
+
+
+#loginform .input-control.error input {
+    border-color: #ff3860;
+}
+
+ .error1 {
+    color: #ff3860;
+    font-size: px; 
+     height: 13px;
+     margin-left: 170px;
+     margin-top: 5px;
+     padding-top: 5px;
+
+}
+/* ========================================================================= */
+/* Register form */
+#registerform  {
+    background-color: #eceff2;
+    border: 1px solid rgb(0, 0, 245);
+    width: 600px;
+    height: 500px; 
+    margin: auto; 
+    margin-top: 50px;
+}
+/* #info{
+    display: inline-block;
+} */
+#registerform label{
+    padding-left: 30px;
+    padding-top: 80px;
+}
+#info input{
+    margin-top: 20px;
+    border: 1px solid rgb(24, 95, 119);
+    height: 30px;
+    width: 300px;
+    background-color: transparent;
+    margin-left: 60px;
+    
+ }
+
+ #radioDiv input{
+    margin-top: 20px;
+    border: 1px solid rgb(24, 95, 119);
+    background-color: transparent;
+}
+/* ============================================================ */
+
+
+
+
+/* #loginform .input-control.success input {
+    border-color: #09c372;
+    background-color: whitesmoke;
+}
+
+
+#loginform .input-control.error input {
+    border-color: #ff3860;
+}
+
+ .error1 {
+    color: #ff3860;
+    font-size: px; 
+     height: 13px;
+     margin-left: 170px;
+     margin-top: 5px;
+     padding-top: 5px;
+
+} */
