@@ -1,11 +1,11 @@
 const form = document.getElementById("loginform");
-// const buttonSubmit = document.getElementById("submit")
+const buttonSubmit = document.getElementById("submit");
+const buttonReset = document.getElementById("cancel");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
+const errorElement = document.querySelectorAll(".divError");
 
 form.addEventListener("submit", (e) => {
-  validateInputs();
-
   if (isFormValid() == true) {
     alert(" You are Logged in ");
   } else {
@@ -26,7 +26,7 @@ function isFormValid() {
 
 const setError = (element, message) => {
   const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector(".error1");
+  const errorDisplay = inputControl.querySelector(".divError");
 
   errorDisplay.innerText = message;
   inputControl.classList.add("error");
@@ -36,11 +36,21 @@ const setError = (element, message) => {
 const setSuccess = (element) => {
   const inputControl = element.parentElement;
 
-  const errorDisplay = inputControl.querySelector(".error1");
+  const errorDisplay = inputControl.querySelector(".divError");
 
   errorDisplay.innerText = "";
   inputControl.classList.add("success");
   inputControl.classList.remove("error");
+};
+
+const setCancel = (element) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".divError");
+  const inputs = document.querySelectorAll("input");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.remove("error");
+  inputs.forEach((input) => (input.value = ""));
 };
 
 const validateInputs = () => {
@@ -63,13 +73,10 @@ const validateInputs = () => {
   }
 };
 
-const btnreset = document.getElementById("cancle")
-const inputs = document.querySelectorAll('input')
-// const errorDisplay = document.querySelector(".error1");
-btnreset.addEventListener('click' , () => {
-//   inputs.forEach(input => input.value='')
-// //   errorDisplay.forEach(errorDisplay => errorDisplay.innerHTML='')
-//   document.querySelector(".error1").innerHTML = " ";
-form.reset()
-})
+buttonSubmit.addEventListener("click", validateInputs);
 
+buttonReset.addEventListener("click", (e) => {
+  e.preventDefault();
+  setCancel(username);
+  setCancel(password);
+});
