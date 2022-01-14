@@ -10,7 +10,7 @@ const femaleGender = document.getElementById("female");
 
 form.addEventListener("submit", (e) => {
   if (isFormValid() == true) {
-    alert(" Your registration is completed ");
+    alert(" Your register is completed ");
   } else {
     e.preventDefault();
   }
