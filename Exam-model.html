@@ -18,9 +18,14 @@
 
             margin: auto;
             width: 60%;
+            /* height: 60vh; */
             border-radius: 10px;
             position: relative;
             margin-top: 100px;
+            background-color: lightslategray;
+
+
+
         }
 
         .exam_header {
@@ -76,7 +81,7 @@
 <body>
     <div id="container">
         <div class="exam_header">
-            <p id="userName"></p>
+            <p id="userName">hello</p>
             <p id="quizName">from</p>
             <p id="timer"></p>
         </div>
@@ -111,24 +116,18 @@
         let container= document.getElementById("container");
         let _questionNum= document.getElementById("questionNum");
         let quizName = document.getElementById("quizName");
-        // let quesHead = document.getElementById("quesHead");
+        let quesHead = document.getElementById("quesHead");
         let labels = document.getElementsByTagName("label");
         let choices = document.querySelectorAll('input[name="ansr"]');
         let questionBody = document.getElementById("question");
         let warning = document.getElementById("warning");
         let nextBtn = document.getElementById("nextBtn");
-        let questionNum = 0;
-        var score= 0;
-        let name = document.getElementById("userName");
-        name.innerHTML=sessionStorage.name;
-        if(sessionStorage.gender=='male')
-        {
-            container.classList.add("male")
-        }
-        else{
-            container.classList.add("female")
-        }
-        // if(sessionStorage.logged){
+        var questionNum = 0
+        var score= 0
+
+
+
+
         let Exam = {
             quizname: "java script",
             quiztime: 1,
@@ -145,7 +144,8 @@
                     answers: [
                         6, 7, 8, 9, 10
                     ],
-                    correct:7
+                    correct:6
+
                 },
                 {
                     head: "whats is3",
@@ -153,6 +153,7 @@
                         11, 12, 13, 14, 15
                     ],
                     correct:11
+
                 },
                 {
                     head: "whats is4",
@@ -181,89 +182,92 @@
         //show next question after click on next button
         nextBtn.addEventListener("click", nextQuestion)
         function nextQuestion() {
-            //remove warning
+            // if()
             addvalue()
-
+            //remove warning
             questionBody.classList.remove("noanswer")
             warning.innerHTML = ("")
             //check if any checkbox is checked before next question
             if (anyCheckbox()) {
-                if (questionNum < question.length -2) { // last of the last 
+                if (questionNum < question.length - 2) {
                     questionNum++
                     quesHead.innerHTML = question[questionNum].head
                     for (let i = 0; i < labels.length; i++) {
                         labels[i].innerHTML = question[questionNum].answers[i]
+
                     }
-                    // Second Condtion if the NextQuestion is The Last With Submit <<<<<
-                }else if (questionNum == question.length -2){
-                    questionNum++
-                    quesHead.innerHTML = question[questionNum].head
-                    nextBtn.innerHTML = "Submit"
-                    for (let i = 0; i < labels.length; i++) {
-                        labels[i].innerHTML = question[questionNum].answers[i]
-                    }
-                    nextBtn.addEventListener("click",()=>{
-                        container.innerHTML = `Exam finished   ${score}`  
-                    })
+                   
                 }
+                // modified part
+                else if (questionNum < question.length - 1){
+                    questionNum++
+                    quesHead.innerHTML = question[questionNum].head
+                    for (let i = 0; i < labels.length; i++) {
+                        labels[i].innerHTML = question[questionNum].answers[i]
+                        nextBtn.innerHTML="submit"
+
+                    }
+                }
+                else 
+                container.innerHTML = `Exam finished ${score}`
             }
             //if no answer 
             else {
                 questionBody.classList.add("noanswer")
                 warning.innerHTML = ("You Have to Choose answer")
             }
-            for (const choice of choices) choice.checked = false;  //to make it empty
-            _questionNum.innerHTML=`Question ${questionNum+1}:` 
+            for (const choice of choices) choice.checked = false;
+            _questionNum.innerHTML=`Question ${questionNum+1}:`
 
         }
         //check if any radiobox checked
         function anyCheckbox() {
-            // var inputElements = document.getElementsByTagName("input");
+            var inputElements = document.getElementsByTagName("input");
             for (var i = 0; i < choices.length; i++)
                 if (choices[i].checked){
                     console.log(choices[i].value)
                     if(choices[i].value==question[questionNum].correct){
                         score+=10  
                         console.log(score)
-                    }                          
+
+                    }
+                                    
                     return true;
+
                 }
             return false;
         }
        function addvalue(){
         for (var i = 0; i < choices.length; i++){
-                        choices[i].value=question[questionNum].answers[i] 
+                        choices[i].value=question[questionNum].answers[i]
                     }
        }
-
         function examtimer() {
             var time = document.getElementById("timer");
-            // var { QuizTime } = exam;
-            var sec = quiztime * 60;  // change min to sec
+            var sec = quiztime * 60;
             console.log();
             let timer = setInterval(function () {
                 secpass();
             }, 1000);
             function secpass() {
-                var min = Math.floor(sec / 60),  //min
-                    remSec = sec % 60; //sec
+                var min = Math.floor(sec / 60),
+                    remSec = sec % 60;
                 if (remSec < 10) {
                     remSec = "0" + remSec;
                 }
                 if (min < 10) {
                     min = "0" + min;
                 }
-                time.innerHTML = min + ":" + remSec;  //timer style
+                time.innerHTML = min + ":" + remSec;
                 if (sec > 0) {
-                    sec = sec - 1;   //decrease by 1 sec
+                    sec = sec - 1;
                 } else {
                     clearInterval(timer);
-                    container.innerHTML = `Exam finished   ${score}`  
+                    container.innerHTML = `Exam finished ${score}`
                 }
             }
         }
         examtimer();
-    // }
     </script>
 </body>
 
