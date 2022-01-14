@@ -1,113 +1,130 @@
-const form = document.getElementById('registerform');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
-const gender = document.querySelector('input[name="gender"]')
-console.log(gender);
+const form = document.getElementById("registerform");
+const buttonSubmit = document.getElementById("submit");
+const buttonReset = document.getElementById("cancel");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const password2 = document.getElementById("password2");
+const maleGender = document.getElementById("male");
+const femaleGender = document.getElementById("female");
 
-form.addEventListener('submit', e => {
-    validateInputs();
-    
-    if (isFormValid() == true) {
-        alert(" You are Logged in ");
-    } else {
-          e.preventDefault();
-      }
+form.addEventListener("submit", (e) => {
+  if (isFormValid() == true) {
+    alert(" Your registration is completed ");
+  } else {
+    e.preventDefault();
+  }
 });
 
 function isFormValid() {
-    const inputContainers = form.querySelectorAll(".input-control");
-    let result = true;
-    inputContainers.forEach((container) => {
-      if (container.classList.contains("error")) {
-        result = false;
-      }
-    });
-    return result;
-  }
-
+  const inputContainers = form.querySelectorAll(".input-control");
+  let result = true;
+  inputContainers.forEach((container) => {
+    if (container.classList.contains("error")) {
+      result = false;
+    }
+  });
+  return result;
+}
 
 const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error1');
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".divError");
 
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
-
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    console.log(inputControl);
-    const errorDisplay = inputControl.querySelector('.error1');
-
-    errorDisplay.innerText = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error');
+  errorDisplay.innerText = message;
+  inputControl.classList.add("error");
+  inputControl.classList.remove("success");
 };
 
-const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
+const setSuccess = (element) => {
+  const inputControl = element.parentElement;
+  console.log(inputControl);
+  const errorDisplay = inputControl.querySelector(".divError");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.add("success");
+  inputControl.classList.remove("error");
+};
+
+const setCancel = (element) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".divError");
+  const inputs = document.querySelectorAll("input");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.remove("error");
+  inputs.forEach((input) => (input.value = ""));
+  inputs.forEach((input) => (input.checked = ""));
+};
+
+const isValidEmail = (email) => {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
 
 const validateInputs = () => {
-    const usernameValue = username.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
-    const genderValue = false;
+  const usernameValue = username.value.trim();
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
+  const password2Value = password2.value.trim();
 
-    if(usernameValue === '') {
-        setError(username, 'Username is required');
-    } else {
-        setSuccess(username);
-    }
+  if (usernameValue === "") {
+    setError(username, "Username is required");
+  } else {
+    setSuccess(username);
+  }
 
-    if(emailValue === '') {
-        setError(email, 'Email is required');
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
-    } else {
-        setSuccess(email);
-    }
+  if (emailValue === "") {
+    setError(email, "Email is required");
+  } else if (!isValidEmail(emailValue)) {
+    setError(email, "Provide a valid email address");
+  } else {
+    setSuccess(email);
+  }
 
-    if(passwordValue === '') {
-        setError(password, 'Password is required');
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 character.')
-    } else {
-        setSuccess(password);
-    }
+  if (passwordValue === "") {
+    setError(password, "Password is required");
+  } else if (passwordValue.length < 8) {
+    setError(password, "Password must be at least 8 character.");
+  } else {
+    setSuccess(password);
+  }
 
-    if(password2Value === '') {
-        setError(password2, 'Please confirm your password');
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords doesn't match");
-    } else {
-        setSuccess(password2);
-    }
-    
-    for(var i=0; i< gender.length;i++){
-        if(gender[i].checked == true){
-            // genValue = true;    
-            setSuccess(gender);
-        }
-    }
-        
-        if(!genderValue){
-            setError(gender, 'select gender please');
-            // return false;
-        }
+  if (password2Value === "") {
+    setError(password2, "Please confirm your password");
+  } else if (password2Value !== passwordValue) {
+    setError(password2, "Passwords doesn't match");
+  } else {
+    setSuccess(password2);
+  }
 
-    // if(!genderValue.checked) {
-    //     setError(gender, 'select gender please');
-    // }  else {
-    //     setSuccess(gender);
-    // }
-
+  if (maleGender.checked || femaleGender.checked) {
+    setSuccess(maleGender);
+  } else {
+    setError(maleGender, " please select Gender ");
+  }
 };
 
+buttonSubmit.addEventListener("click", validateInputs);
 
+buttonReset.addEventListener("click", (e) => {
+  e.preventDefault();
+  setCancel(username);
+  setCancel(password);
+  setCancel(password2);
+  setCancel(email);
+  setCancel(password);
+  setCancel(maleGender);
+  setCancel(femaleGender);
+});
 
+// let student = {
+//     id: Date.now(),
+//     userName: usernameValue,
+//     password: passwordValue
+// }
+// students.push(student);
+
+// //saving to localStorage
+// localStorage.setItem('Students', JSON.stringify(students) );
