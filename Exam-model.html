@@ -111,7 +111,7 @@
         let container= document.getElementById("container");
         let _questionNum= document.getElementById("questionNum");
         let quizName = document.getElementById("quizName");
-        let quesHead = document.getElementById("quesHead");
+        // let quesHead = document.getElementById("quesHead");
         let labels = document.getElementsByTagName("label");
         let choices = document.querySelectorAll('input[name="ansr"]');
         let questionBody = document.getElementById("question");
@@ -128,10 +128,10 @@
         else{
             container.classList.add("female")
         }
-        if(sessionStorage.logged){
+        // if(sessionStorage.logged){
         let Exam = {
             quizname: "java script",
-            quiztime: 10,
+            quiztime: 1,
             question: [
                 {
                     head: "what is 2*5",
@@ -201,13 +201,13 @@
                 questionBody.classList.add("noanswer")
                 warning.innerHTML = ("You Have to Choose answer")
             }
-            for (const choice of choices) choice.checked = false;
-            _questionNum.innerHTML=`Question ${questionNum+1}:`
+            for (const choice of choices) choice.checked = false;  //to make it empty
+            _questionNum.innerHTML=`Question ${questionNum+1}:` 
 
         }
         //check if any radiobox checked
         function anyCheckbox() {
-            var inputElements = document.getElementsByTagName("input");
+            // var inputElements = document.getElementsByTagName("input");
             for (var i = 0; i < choices.length; i++)
                 if (choices[i].checked){
                     console.log(choices[i].value)
@@ -221,43 +221,38 @@
         }
        function addvalue(){
         for (var i = 0; i < choices.length; i++){
-                        choices[i].value=question[questionNum].answers[i]
-                    }
-       }
-       function addvalue(){
-        for (var i = 0; i < choices.length; i++){
-                        choices[i].value=question[questionNum].answers[i]
+                        choices[i].value=question[questionNum].answers[i] 
                     }
        }
 
         function examtimer() {
             var time = document.getElementById("timer");
             // var { QuizTime } = exam;
-            var sec = quiztime * 60;
+            var sec = quiztime * 60;  // change min to sec
             console.log();
             let timer = setInterval(function () {
                 secpass();
             }, 1000);
             function secpass() {
-                var min = Math.floor(sec / 60),
-                    remSec = sec % 60;
+                var min = Math.floor(sec / 60),  //min
+                    remSec = sec % 60; //sec
                 if (remSec < 10) {
                     remSec = "0" + remSec;
                 }
                 if (min < 10) {
                     min = "0" + min;
                 }
-                time.innerHTML = min + ":" + remSec;
+                time.innerHTML = min + ":" + remSec;  //timer style
                 if (sec > 0) {
-                    sec = sec - 1;
+                    sec = sec - 1;   //decrease by 1 sec
                 } else {
                     clearInterval(timer);
-                    container.innerHTML = "Exam finished"
+                    container.innerHTML = `Exam finished   ${score}`  
                 }
             }
         }
         examtimer();
-    }
+    // }
     </script>
 </body>
 
