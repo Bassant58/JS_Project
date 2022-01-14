@@ -117,7 +117,8 @@
         let questionBody = document.getElementById("question");
         let warning = document.getElementById("warning");
         let nextBtn = document.getElementById("nextBtn");
-        let questionNum = 0
+        let questionNum = 0;
+        var score= 0;
         let name = document.getElementById("userName");
         name.innerHTML=sessionStorage.name;
         if(sessionStorage.gender=='male')
@@ -130,7 +131,7 @@
         if(sessionStorage.logged){
         let Exam = {
             quizname: "java script",
-            quiztime: 1,
+            quiztime: 10,
             question: [
                 {
                     head: "what is 2*5",
@@ -181,6 +182,8 @@
         nextBtn.addEventListener("click", nextQuestion)
         function nextQuestion() {
             //remove warning
+            addvalue()
+
             questionBody.classList.remove("noanswer")
             warning.innerHTML = ("")
             //check if any checkbox is checked before next question
@@ -206,10 +209,26 @@
         function anyCheckbox() {
             var inputElements = document.getElementsByTagName("input");
             for (var i = 0; i < choices.length; i++)
-                if (choices[i].checked)
+                if (choices[i].checked){
+                    console.log(choices[i].value)
+                    if(choices[i].value==question[questionNum].correct){
+                        score+=10  
+                        console.log(score)
+                    }                          
                     return true;
+                }
             return false;
         }
+       function addvalue(){
+        for (var i = 0; i < choices.length; i++){
+                        choices[i].value=question[questionNum].answers[i]
+                    }
+       }
+       function addvalue(){
+        for (var i = 0; i < choices.length; i++){
+                        choices[i].value=question[questionNum].answers[i]
+                    }
+       }
 
         function examtimer() {
             var time = document.getElementById("timer");
