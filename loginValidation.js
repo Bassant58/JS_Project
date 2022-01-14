@@ -7,8 +7,10 @@ const errorElement = document.querySelectorAll(".divError");
 
 form.addEventListener("submit", (e) => {
   if (isFormValid() == true) {
+    sessionStorage.logged=true;
     alert(" You are Logged in ");
   } else {
+    sessionStorage.logged=false;
     e.preventDefault();
   }
 });
@@ -37,7 +39,7 @@ const setSuccess = (element) => {
   const inputControl = element.parentElement;
 
   const errorDisplay = inputControl.querySelector(".divError");
-
+  
   errorDisplay.innerText = "";
   inputControl.classList.add("success");
   inputControl.classList.remove("error");
@@ -60,7 +62,11 @@ const validateInputs = () => {
 
   if (usernameValue === "") {
     setError(username, "Username is required");
-  } else {
+  } 
+  else if (username.value!=sessionStorage.name) {
+    setError(username, "Username is incorrect");
+  }
+  else {
     setSuccess(username);
   }
 
@@ -68,6 +74,9 @@ const validateInputs = () => {
     setError(password, "Password is required");
   } else if (passwordValue.length < 8) {
     setError(password, "Password must be at least 8 character.");
+  }
+  else if (password.value!=sessionStorage.password) {
+    setError(password, "password is incorrect");
   } else {
     setSuccess(password);
   }

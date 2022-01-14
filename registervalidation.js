@@ -11,6 +11,9 @@ const femaleGender = document.getElementById("female");
 form.addEventListener("submit", (e) => {
   if (isFormValid() == true) {
     alert(" Your registration is completed ");
+    sessionStorage.name = username.value;
+    sessionStorage.password = password.value;
+    sessionStorage.gender = maleGender.checked ? "male" :'female';
   } else {
     e.preventDefault();
   }
