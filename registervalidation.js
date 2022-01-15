@@ -11,6 +11,9 @@ const femaleGender = document.getElementById("female");
 form.addEventListener("submit", (e) => {
   if (isFormValid() == true) {
     alert(" Your register is completed ");
+    sessionStorage.name = username.value;
+    sessionStorage.password = password.value;
+    sessionStorage.gender = maleGender.checked ? "male" :'female';
   } else {
     e.preventDefault();
   }
@@ -119,12 +122,3 @@ buttonReset.addEventListener("click", (e) => {
   setCancel(femaleGender);
 });
 
-// let student = {
-//     id: Date.now(),
-//     userName: usernameValue,
-//     password: passwordValue
-// }
-// students.push(student);
-
-// //saving to localStorage
-// localStorage.setItem('Students', JSON.stringify(students) );
