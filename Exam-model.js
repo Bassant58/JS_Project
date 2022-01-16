@@ -19,41 +19,76 @@ if (sessionStorage.gender == 'male') {
 if (sessionStorage.logged) {
     let Exam = {
         quizname: "java script",
-        quiztime: 1,
+        quiztime: 10,
         question: [{
-                head: "what is 2*5",
+                head: " Which type of JavaScript language is",
                 answers: [
-                    1, 2, 3, 4, 5
+                    'Object-Oriented', 'Object-Based', 'Assembly-language', 'High-level', 'non of the above'
                 ],
-                correct: 1
+                correct:'Object-Based'
             },
             {
-                head: "whats is2",
+                head: "Which one of the following also known as Conditional Expression:",
                 answers: [
-                    6, 7, 8, 9, 10
+                    'Alternative to if-else','Switch statement','If-then-else statement','immediate if','non of the above'
                 ],
-                correct: 7
+                correct: 'immediate if'
             },
             {
-                head: "whats is3",
+                head: " In JavaScript, what is a block of statement?",
                 answers: [
-                    11, 12, 13, 14, 15
+                    'Conditional block','block that combines a number of statements into a single compound statement','both conditional block and a single statement','block that contains a single statement','non of the above'
                 ],
-                correct: 11
+                correct: 'block that combines a number of statements into a single compound statement'
             },
             {
-                head: "whats is4",
+                head: "When interpreter encounters an empty statements, what it will do:",
                 answers: [
-                    16, 17, 18, 19, 20
+                    'Shows a warning','Prompts to complete the statement','Throws an error','Ignores the statements','non of the above'
                 ],
-                correct: 16
+                correct: 'Ignores the statements'
             },
             {
-                head: "whats is5",
+                head: "The 'function' and 'var' are known as:",
                 answers: [
-                    21, 22, 23, 24, 25
+                    'Keywords','Data types','Declaration statements','Prototypes','non of the above'
                 ],
-                correct: 21
+                correct: 'Declaration statements'
+            },
+            {
+                head: "Which one of the following is the correct way for calling the JavaScript code?",
+                answers: [
+                    'Preprocessor','Triggering Event','RMI','Function/Method','non of the above'
+                ],
+                correct: 'Function/Method'
+            },
+            {
+                head: "Which of the following type of a variable is volatile?",
+                answers: [
+                    'Mutable variable','Dynamic variable','Volatile variable','Immutable variable','non of the above'
+                ],
+                correct: 'Mutable variable'
+            },
+            {
+                head: "Which of the following option is used as hexadecimal literal beginning?",
+                answers: [
+                    '00','0x','0X','Both 0x and 0X','non of the above'
+                ],
+                correct: 'Both 0x and 0X'
+            },
+            {
+                head: " In the JavaScript, which one of the following is not considered as an error:",
+                answers: [
+                    'Syntax error','Missing of semicolons','Division by zero','Missing of Bracket','non of the above'
+                ],
+                correct: 'Division by zero'
+            },
+            {
+                head: "Which of the following number object function returns the value of the number?",
+                answers: [
+                    'toString()','valueOf()','toLocaleString()','toPrecision()','non of the above'
+                ],
+                correct: 'valueOf()'
             }
         ]
     };
