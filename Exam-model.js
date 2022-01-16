@@ -25,68 +25,68 @@ if (sessionStorage.logged) {
                 answers: [
                     'Object-Oriented', 'Object-Based', 'Assembly-language', 'High-level', 'non of the above'
                 ],
-                correct:'Object-Based'
+                correct: 'Object-Based'
             },
             {
                 head: "Which one of the following also known as Conditional Expression:",
                 answers: [
-                    'Alternative to if-else','Switch statement','If-then-else statement','immediate if','non of the above'
+                    'Alternative to if-else', 'Switch statement', 'If-then-else statement', 'immediate if', 'non of the above'
                 ],
                 correct: 'immediate if'
             },
             {
                 head: " In JavaScript, what is a block of statement?",
                 answers: [
-                    'Conditional block','block that combines a number of statements into a single compound statement','both conditional block and a single statement','block that contains a single statement','non of the above'
+                    'Conditional block', 'block that combines a number of statements into a single compound statement', 'both conditional block and a single statement', 'block that contains a single statement', 'non of the above'
                 ],
                 correct: 'block that combines a number of statements into a single compound statement'
             },
             {
                 head: "When interpreter encounters an empty statements, what it will do:",
                 answers: [
-                    'Shows a warning','Prompts to complete the statement','Throws an error','Ignores the statements','non of the above'
+                    'Shows a warning', 'Prompts to complete the statement', 'Throws an error', 'Ignores the statements', 'non of the above'
                 ],
                 correct: 'Ignores the statements'
             },
             {
                 head: "The 'function' and 'var' are known as:",
                 answers: [
-                    'Keywords','Data types','Declaration statements','Prototypes','non of the above'
+                    'Keywords', 'Data types', 'Declaration statements', 'Prototypes', 'non of the above'
                 ],
                 correct: 'Declaration statements'
             },
             {
                 head: "Which one of the following is the correct way for calling the JavaScript code?",
                 answers: [
-                    'Preprocessor','Triggering Event','RMI','Function/Method','non of the above'
+                    'Preprocessor', 'Triggering Event', 'RMI', 'Function/Method', 'non of the above'
                 ],
                 correct: 'Function/Method'
             },
             {
                 head: "Which of the following type of a variable is volatile?",
                 answers: [
-                    'Mutable variable','Dynamic variable','Volatile variable','Immutable variable','non of the above'
+                    'Mutable variable', 'Dynamic variable', 'Volatile variable', 'Immutable variable', 'non of the above'
                 ],
                 correct: 'Mutable variable'
             },
             {
                 head: "Which of the following option is used as hexadecimal literal beginning?",
                 answers: [
-                    '00','0x','0X','Both 0x and 0X','non of the above'
+                    '00', '0x', '0X', 'Both 0x and 0X', 'non of the above'
                 ],
                 correct: 'Both 0x and 0X'
             },
             {
                 head: " In the JavaScript, which one of the following is not considered as an error:",
                 answers: [
-                    'Syntax error','Missing of semicolons','Division by zero','Missing of Bracket','non of the above'
+                    'Syntax error', 'Missing of semicolons', 'Division by zero', 'Missing of Bracket', 'non of the above'
                 ],
                 correct: 'Division by zero'
             },
             {
                 head: "Which of the following number object function returns the value of the number?",
                 answers: [
-                    'toString()','valueOf()','toLocaleString()','toPrecision()','non of the above'
+                    'toString()', 'valueOf()', 'toLocaleString()', 'toPrecision()', 'non of the above'
                 ],
                 correct: 'valueOf()'
             }
@@ -110,22 +110,17 @@ if (sessionStorage.logged) {
     function nextQuestion() {
         //remove warning
         addvalue()
-
         questionBody.classList.remove("noanswer")
         warning.innerHTML = ("")
         //check if any checkbox is checked before next question
         if (anyCheckbox()) {
-
             if (questionNum < question.length - 1) {
-
                 if (questionNum < question.length - 2) { // last of the last 
-
                     questionNum++
                     quesHead.innerHTML = question[questionNum].head
                     for (let i = 0; i < labels.length; i++) {
                         labels[i].innerHTML = question[questionNum].answers[i]
                     }
-
                     // Second Condtion if the NextQuestion is The Last With Submit <<<<<
                 } else if (questionNum == question.length - 2) {
                     questionNum++
@@ -139,15 +134,16 @@ if (sessionStorage.logged) {
                     })
                 }
             }
-            //if no answer 
-            else {
-                questionBody.classList.add("noanswer")
-                warning.innerHTML = ("You Have to Choose answer")
-            }
-            for (const choice of choices) choice.checked = false; //to make it empty
-            _questionNum.innerHTML = `Question ${questionNum+1}:`
-
         }
+        //if no answer 
+        else {
+            questionBody.classList.add("noanswer")
+            warning.innerHTML = ("You Have to Choose answer")
+        }
+        for (const choice of choices) choice.checked = false; //to make it empty
+        _questionNum.innerHTML = `Question ${questionNum+1}:`
+
+
     }
     //check if any radiobox checked
     function anyCheckbox() {
