@@ -134,6 +134,14 @@ button:hover {
   position: relative;
   margin-top: 100px;
 }
+.female.pass , .male.pass{
+  padding: 50px ;
+  text-align: center;
+  color: rgb(155, 39, 4);
+  width: 200px;
+  font-size: 25px;
+  font-weight: bold;
+}
 
 .exam_header {
   display: grid;
@@ -164,6 +172,8 @@ button:hover {
   position: absolute;
   right: 50px;
   font-size: 20px;
+  background-color: rgb(211, 206, 206);
+  color: rgb(155, 39, 4);
 
 }
 

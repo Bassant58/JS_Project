@@ -19,7 +19,7 @@ if (sessionStorage.gender == 'male') {
 if (sessionStorage.logged) {
     let Exam = {
         quizname: "java script",
-        quiztime: 10,
+        quiztime: .25,
         question: [{
                 head: " Which type of JavaScript language is",
                 answers: [
@@ -190,7 +190,8 @@ if (sessionStorage.logged) {
                 sec = sec - 1; //decrease by 1 sec
             } else {
                 clearInterval(timer);
-                container.innerHTML = `Exam finished   ${score}`
+                container.innerHTML = ` Exam finished. Your score is : ${ score}`
+                container.classList.add("pass")
             }
         }
     }
