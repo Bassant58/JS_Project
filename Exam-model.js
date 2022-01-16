@@ -114,26 +114,27 @@ if (sessionStorage.logged) {
         warning.innerHTML = ("")
         //check if any checkbox is checked before next question
         if (anyCheckbox()) {
-            if (questionNum < question.length - 1) {
-                if (questionNum < question.length - 2) { // last of the last 
-                    questionNum++
-                    quesHead.innerHTML = question[questionNum].head
-                    for (let i = 0; i < labels.length; i++) {
-                        labels[i].innerHTML = question[questionNum].answers[i]
-                    }
-                    // Second Condtion if the NextQuestion is The Last With Submit <<<<<
-                } else if (questionNum == question.length - 2) {
-                    questionNum++
-                    quesHead.innerHTML = question[questionNum].head
-                    nextBtn.innerHTML = "Submit"
-                    for (let i = 0; i < labels.length; i++) {
-                        labels[i].innerHTML = question[questionNum].answers[i]
-                    }
-                    nextBtn.addEventListener("click", () => {
-                        container.innerHTML = `Exam finished   ${score}`
-                    })
+            if (questionNum < question.length - 2) {
+                questionNum++
+                quesHead.innerHTML = question[questionNum].head
+                for (let i = 0; i < labels.length; i++) {
+                    labels[i].innerHTML = question[questionNum].answers[i]
+
+                }
+               
+            }
+            // modified part
+            else if (questionNum < question.length - 1){
+                questionNum++
+                quesHead.innerHTML = question[questionNum].head
+                for (let i = 0; i < labels.length; i++) {
+                    labels[i].innerHTML = question[questionNum].answers[i]
+                    nextBtn.innerHTML="submit"
+
                 }
             }
+            else 
+            container.innerHTML = `Exam finished ${score}`
         }
         //if no answer 
         else {
