@@ -126,3 +126,59 @@ button:hover {
 }
 /* ============================================================ */
 /* ==================== Quiz Page============================== */
+#container{
+
+  margin: auto;
+  width: 60%;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 100px;
+}
+
+.exam_header {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.female {
+  background-color: lightpink;
+}
+
+.male {
+  background-color: lightslategray;
+}
+
+#userName,
+#quizName,
+#timer {
+  border: 1px black solid;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.btn1 {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  right: 50px;
+  font-size: 20px;
+
+}
+
+#question {
+  margin: 20px;
+  padding: 40px;
+}
+#quesHead{
+  margin-bottom: 20px;
+}
+.noanswer {
+  box-shadow: 1px 1px 20px 10px red;
+}
+
+#warning {
+  text-align: center;
+  color: red;
+}
