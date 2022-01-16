@@ -1,6 +1,4 @@
 
-# JS_Project
-
 Names:
 
 Bassant Ali Mohamed
